@@ -1,0 +1,140 @@
+:root {
+  color: #1c1915;
+  background: #f3ecdf;
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  line-height: 1.45;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+}
+
+main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.kicker {
+  margin: 0 0 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: #6d5c48;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.lede, .as-of {
+  max-width: 62ch;
+  color: #43382c;
+}
+
+section {
+  margin-top: 40px;
+  padding-top: 8px;
+}
+
+h2 {
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+caption {
+  caption-side: bottom;
+  text-align: left;
+  color: #6d5c48;
+  padding-top: 8px;
+  font-size: 0.85rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddcfba;
+  vertical-align: baseline;
+}
+
+th:nth-child(n + 2), td:nth-child(n + 2), .num {
+  text-align: right;
+}
+
+.balance {
+  font-weight: 600;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: #6d5c48;
+}
+
+input, select {
+  font: inherit;
+  color: inherit;
+  background: #fffaf3;
+  border: 1px solid #c9b79a;
+  border-radius: 2px;
+  padding: 8px;
+}
+
+.routes, .runway {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.routes li, .runway li {
+  padding: 12px 0;
+  border-bottom: 1px solid #ddcfba;
+}
+
+.route-head, .runway-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.path, .meta, .empty {
+  margin: 4px 0 0;
+  color: #43382c;
+}
+
+.track {
+  margin-top: 6px;
+  height: 8px;
+  background: #e4d8c6;
+}
+
+.track span {
+  display: block;
+  height: 100%;
+  background: #1f6b45;
+}
+
+.track span.short {
+  background: #8c3a2f;
+}
