@@ -19,6 +19,8 @@ export default defineConfig({
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
+    // exec the Node process. `pnpm exec` puts Vite in its own process group and
+    // keeps Playwright's stdout pipe open, so the web job never exits.
     command:
       "pnpm build && exec node ./node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4173 --strictPort",
     url: origin,
