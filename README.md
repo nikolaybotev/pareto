@@ -2,7 +2,7 @@
 
 A zero-dependency Node.js ledger for a small set of cash accounts. It posts balanced journal entries in SQLite, keeps future obligations on an append-only schedule, projects each cash account's runway, and chooses one route for the **full** transfer amount. The route weighs the deadline, the rail, the fee, and the time. It does not divide a payment into smaller transfers.
 
-The library is [`ledger.js`](ledger.js). The CLI is [`pareto.js`](pareto.js). The skill is [`.agents/skills/pareto-treasury/SKILL.md`](.agents/skills/pareto-treasury/SKILL.md). The page is [`apps/web`](apps/web). The design is [intent/prototype/](intent/prototype/intent.md).
+The library is [`ledger.js`](ledger.js). The CLI is [`pareto.js`](pareto.js). The skill is [`.agents/skills/pareto-treasury/SKILL.md`](.agents/skills/pareto-treasury/SKILL.md). The page is [`apps/web`](apps/web). The design is [intent/prototype/](intent/prototype/intent.md). Agents read [`AGENTS.md`](AGENTS.md) for commands, the SDLC cycle, CI checks, and recurring mistakes.
 
 ## Requirements
 
@@ -41,7 +41,7 @@ node pareto.js post --db books.sqlite --date 2026-11-01 --description "Permit ac
 
 No command exits non-zero and names `init`, `demo`, `trial-balance`, `post`, `obligations`, `runway`, and `route`.
 
-The page calls the same library. `pnpm --dir apps/web dev` serves it, `pnpm --dir apps/web build` writes `apps/web/dist`, and `pnpm --dir apps/web preview` serves that build. Vite's dev server does not turn the CommonJS exports in `ledger.js` into the named imports. Use the production build and preview.
+The page calls the same library. `pnpm --dir apps/web build` writes `apps/web/dist`, and `pnpm --dir apps/web preview` serves that build. `pnpm --dir apps/web dev` stays blank: Vite's dev server does not turn the CommonJS exports in `ledger.js` into the named imports. Use the production build and preview.
 
 ## Test
 
