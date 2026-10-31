@@ -41,19 +41,7 @@ A report leads with the pull request link and an outcome that can be checked, th
 
 The `ai-native-sdlc` skill is installed by `.cursor/install.sh` from `nikolaybotev/local-skills`. It stays out of this repo. Product skills live in `.agents/skills/<name>/`. Do not add `CLAUDE.md` or `.claude/skills/`.
 
-Code and tests use fictional counterparties only. See **Personal data** below.
-
-## Personal data
-
-Do not write the owner's personal data into this repository—in intents, specs, plans, examples, test fixtures, docs, commit messages, or pull-request text—even when it came from the owner's messages or a brief. Before you commit, scan what you wrote and replace any personal data with neutral placeholders.
-
-Personal data means street names and addresses; parcel numbers (APNs); loan, account, and other financial figures that belong to the owner; employer details; family and contact details; and IP addresses, keys, or hostnames tied to the owner's home. Names of people, lenders, banks, and other institutions tied to the owner's dealings (for example a loan officer or a bank that extended an offer) are personal data; replace them with neutral placeholders such as "Lender A" or "Bank B". Made-up example names in product fixtures stay. His managed public identity (his name, his picture, his GitHub account and his name in open-source license files) is not sensitive personal data that needs to be kept private, and stays.
-
-For mortgage and home-purchase work, dollar amounts, rates, percentages, fees, down-payment scenarios, house prices, closing-cost worksheets, and lender offers are not personal data and may remain in commits and pull requests.
-
-The published demo fixtures in `ledger.js` (the cabinet obligation schedule, the $8,500 reference route, and the demo account balances named in **Commands** above) are the product example. Do not strip or replace them when they are part of that demo.
-
-A real value that must stay in use belongs only in an untracked local file or a secret store, not in git.
+Code and tests use fictional counterparties only.
 
 ## Repository policy
 
