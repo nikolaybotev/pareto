@@ -5,7 +5,7 @@ A zero-dependency Node.js double-entry ledger, an append-only obligation schedul
 ## Commands
 
 - Install: `mise install` in the repo root installs the Node version pinned in `mise.toml`. Without mise, match that pin. `corepack enable`, activate the `packageManager` from `package.json`, then `pnpm install --frozen-lockfile`.
-- Demo: `node pareto.js demo`. Expect `Books balance.` and the $8,500.00 reference route `ACH_SAME_DAY` then `INTERNAL_BOOK`, arriving `2026-10-29T15:05`.
+- Demo: `node pareto.js demo` (healthy: `Books balance.` and the $8,500.00 reference route `ACH_SAME_DAY` then `INTERNAL_BOOK`, arriving `2026-10-29T15:05`).
 - JSON: `node pareto.js demo --json`. Money fields are integer cents.
 - Route: `node pareto.js route --from SAVINGS --to CHK_PROJ --amount 8500 --start 2026-10-29T09:15 --deadline 2026-10-30T15:00`.
 - Books: `node pareto.js init --db books.sqlite`, then `demo --db`, `trial-balance --db`, `obligations --db`, `runway --db --account CHK_PROJ`, and `post`.
@@ -56,7 +56,7 @@ Cloud Agent setup is committed: `.cursor/environment.json` runs `bash .cursor/in
 ## Architecture
 
 - `ledger.js` is the library. It has no Node APIs. It exports the SQL schema, `createLedger` / `openLedger` for a `node:sqlite`-shaped driver, the obligation fold, the runway, and `routeLiquidity`. The page and the CLI both call it.
-- `pareto.js` is the CLI. It opens SQLite and prints.
+- `pareto.js` is the CLI. It opens SQLite, prints, and exits non-zero on a bad argument.
 - `.agents/skills/pareto-treasury/SKILL.md` is the chat front end. It runs `scripts/pareto.js`, a symlink to the CLI at the repo root.
 - `apps/web` is the page. It imports `buildDemoReport`, `routeLiquidity`, and `defaultRails` from `ledger.js`.
 - `intent/prototype/` is the spec and plan for this prototype. The verbatim Gemini capture is `intent/prototype/source-transcript.md`.
