@@ -5,7 +5,7 @@ description: >-
   chooses one full-amount route across accounts by deadline, rail, fee, and
   time. Use when the user asks which account funds a bill, when cash runs
   short, how to move the full amount between their own accounts, or for a
-  trial balance from this repo. Runs the repo CLI. Does not divide one
+  trial balance from this repo. Runs this repo's CLI. Does not divide one
   payment into smaller transfers, and does not schedule transfers to stay
   under a reporting threshold.
 ---

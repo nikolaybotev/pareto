@@ -22,4 +22,5 @@ pnpm --dir apps/web exec playwright install --with-deps chromium
 pnpm --dir apps/web build
 
 # Cloud Agent Skills menu and runtime read ~/.cursor/skills-cursor. Existing skill folders are left in place.
-curl -fsSL https://raw.githubusercontent.com/nikolaybotev/local-skills/main/install.sh | sh -s -- ~/.cursor/skills-cursor
+LOCAL_SKILLS_INSTALL_URL="${LOCAL_SKILLS_INSTALL_URL:-https://raw.githubusercontent.com/nikolaybotev/local-skills/main/install.sh}"
+curl -fsSL "${LOCAL_SKILLS_INSTALL_URL}" | sh -s -- ~/.cursor/skills-cursor
