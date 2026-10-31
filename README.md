@@ -6,7 +6,7 @@ The library is [`ledger.js`](ledger.js). The CLI is [`pareto.js`](pareto.js). Th
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/) 24 or later. `node:sqlite` is part of that runtime. Continuous integration runs the tests on Node.js 24.
+- [Node.js](https://nodejs.org/) at the version pinned in [`mise.toml`](mise.toml) or newer. `node:sqlite` is part of that runtime. Continuous integration uses the same pin.
 - Optional: [mise](https://mise.jdx.dev/). From this directory, `mise install` installs the Node version pinned in `mise.toml`.
 
 ## Run
@@ -49,7 +49,7 @@ The page calls the same library. `pnpm --dir apps/web build` writes `apps/web/di
 node --disable-warning=ExperimentalWarning --test
 ```
 
-With mise installed, `mise run test` runs the same command. `node:sqlite` prints an experimental warning unless that flag is set. The warning is from the runtime, not a failing test.
+With mise installed, `mise run test` runs the same command. Set `--disable-warning=ExperimentalWarning` when `node:sqlite` prints its experimental warning.
 
 Page unit tests are `pnpm --dir apps/web test`. End-to-end tests are `pnpm --dir apps/web test:e2e` (first time: `pnpm --dir apps/web exec playwright install --with-deps chromium`).
 

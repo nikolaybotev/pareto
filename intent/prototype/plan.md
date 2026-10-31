@@ -30,7 +30,7 @@ Files: `ledger.js`, `ledger.d.ts`, `pareto.js`, `ledger.test.js`, `.agents/skill
 3. Implement the CLI, the skill symlink, and the page on that library.
 4. Cover AC1–AC4.
 
-DoD: the four checks in the coverage table exit 0.
+DoD: the four checks in the coverage table pass.
 
 ### Build notes (Phase 0)
 

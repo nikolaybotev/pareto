@@ -86,7 +86,7 @@ They lower the amount to $4,000.00. The direct instant rail is eligible and beco
 
 **D7 — Scaffold.** The repo follows compound: `.cursor/environment.json` runs the install script that pulls `nikolaybotev/local-skills` (that install includes `ai-native-sdlc`), the MIT `LICENSE` text is the same file, and the product is a root `.js` library, a CLI, a skill with a `scripts/` symlink, and a Preact page in `apps/web`. Compound is public and was read on 2026-10-28.
 
-**D8 — SQLite driver.** `node:sqlite` in Node.js 24. The library takes the driver as an argument and does not import it, so the page can call the pure functions. `createLedger` runs the schema. The balance check is in `postEntry` before commit, not a SQL trigger. A trigger is **Later**.
+**D8 — SQLite driver.** `node:sqlite` on the Node version pinned in `mise.toml`. The library takes the driver as an argument and does not import it, so the page can call the pure functions. `createLedger` runs the schema. The balance check is in `postEntry` before commit, not a SQL trigger. A trigger is **Later**.
 
 ## 8. Open questions
 
