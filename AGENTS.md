@@ -47,7 +47,9 @@ Code and tests use fictional counterparties only. See **Personal data** below.
 
 Do not write the owner's personal data into this repository—in intents, specs, plans, examples, test fixtures, docs, commit messages, or pull-request text—even when it came from the owner's messages or a brief. Before you commit, scan what you wrote and replace any personal data with neutral placeholders.
 
-Personal data means street names and addresses; parcel numbers (APNs); loan, account, and other financial figures that belong to the owner; employer details; family and contact details; and IP addresses, keys, or hostnames tied to the owner's home.
+Personal data means street names and addresses; parcel numbers (APNs); loan, account, and other financial figures that belong to the owner; employer details; family and contact details; and IP addresses, keys, or hostnames tied to the owner's home. Names of people, lenders, banks, and other institutions tied to the owner's dealings (for example a loan officer or a bank that extended an offer) are personal data; replace them with neutral placeholders such as "Lender A" or "Bank B". Made-up example names in product fixtures stay.
+
+For mortgage and home-purchase work, dollar amounts, rates, percentages, fees, down-payment scenarios, house prices, closing-cost worksheets, and lender offers are not personal data and may remain in commits and pull requests.
 
 The published demo fixtures in `ledger.js` (the cabinet obligation schedule, the $8,500 reference route, and the demo account balances named in **Commands** above) are the product example. Do not strip or replace them when they are part of that demo.
 
