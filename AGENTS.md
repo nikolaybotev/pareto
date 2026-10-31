@@ -4,7 +4,7 @@ A zero-dependency Node.js double-entry ledger, an append-only obligation schedul
 
 ## Commands
 
-- Install: `mise install` in the repo root installs Node.js 24 from `mise.toml`. Otherwise use Node.js 24. `corepack enable && corepack prepare pnpm@12.6.0 --activate`, then `pnpm install --frozen-lockfile`.
+- Install: `mise install` in the repo root installs the Node version pinned in `mise.toml`. Without mise, match that pin. `corepack enable`, activate the `packageManager` from `package.json`, then `pnpm install --frozen-lockfile`.
 - Demo: `node pareto.js demo` (healthy: `Books balance.` and the $8,500.00 reference route `ACH_SAME_DAY` then `INTERNAL_BOOK`, arriving `2026-10-29T15:05`).
 - JSON: `node pareto.js demo --json`. Money fields are integer cents.
 - Route: `node pareto.js route --from SAVINGS --to CHK_PROJ --amount 8500 --start 2026-10-29T09:15 --deadline 2026-10-30T15:00`.
@@ -12,7 +12,7 @@ A zero-dependency Node.js double-entry ledger, an append-only obligation schedul
 - Test: `node --disable-warning=ExperimentalWarning --test` or `mise run test`.
 - Page: `pnpm --dir apps/web build` then `pnpm --dir apps/web preview`. `pnpm --dir apps/web dev` stays blank because Vite does not turn the CommonJS exports in `ledger.js` into named imports. `pnpm --dir apps/web test` runs the page unit test. `pnpm --dir apps/web test:e2e` runs Playwright against `vite preview`.
 - Lint: none.
-- CI: `.github/workflows/test.yml` runs `node --test` on Node.js 24 with no install step (`test`), and a second job (`web`) that installs the web app with pnpm and runs its unit tests and Playwright. Each job has a 10-minute timeout so a hang fails the check. `.github/workflows/codeql.yml` (workflow `CodeQL`, check **`Analyze (javascript-typescript)`**) runs CodeQL on `javascript-typescript` with `build-mode: none` for pull requests to `main`, pushes to `main`, and a weekly schedule; it needs no install step. Merge waits on `test`, `web`, and **`Analyze (javascript-typescript)`** once Roger requires those checks on `main`.
+- CI: `.github/workflows/test.yml` runs `node --test` with no install step on job `test`, and a second job (`web`) that installs the web app with pnpm and runs its unit tests and Playwright. Each job has a 10-minute timeout so a hang fails the check. `.github/workflows/codeql.yml` (workflow `CodeQL`, check **`Analyze (javascript-typescript)`**) runs CodeQL on `javascript-typescript` with `build-mode: none` for pull requests to `main`, pushes to `main`, and a weekly schedule; it needs no install step. Merge waits on `test`, `web`, and **`Analyze (javascript-typescript)`** once branch protection requires those checks on `main`.
 
 ## Conventions
 
@@ -47,9 +47,9 @@ Code and tests use fictional counterparties only.
 
 This repository is public. Pull requests merge with squash only. Delete the branch on merge. Auto-merge is off.
 
-Roger configures branch protection and rulesets in GitHub settings. This repo does not ship scripts or workflows that create or change rulesets or branch protection; the Project token cannot.
+Whoever maintains branch protection configures rulesets in GitHub settings. This repo does not ship scripts or workflows that create or change rulesets or branch protection; the Project token cannot.
 
-When Roger adds a ruleset on `main`, it should block branch deletion, block force-push, require linear history, require signed commits, require a pull request, allow only squash merges, require zero approvals, and strictly require these checks: **`test`**, **`web`**, and **`Analyze (javascript-typescript)`**.
+A ruleset on `main` should block branch deletion, block force-push, require linear history, require signed commits, require a pull request, allow only squash merges, require zero approvals, and strictly require these checks: **`test`**, **`web`**, and **`Analyze (javascript-typescript)`**.
 
 Cloud Agent setup is committed: `.cursor/environment.json` runs `bash .cursor/install.sh` (mise, pnpm, the web build, Playwright Chromium, and the local-skills installer) and `bash .cursor/start.sh`. The bootstrap skill allows a no-op start; here `start.sh` serves `vite preview` for Cloud Agents. GitHub Pages deploy is not wired yet; `intent/prototype/spec.md` keeps the page local-only for now.
 
@@ -78,5 +78,5 @@ Cloud Agent setup is committed: `.cursor/environment.json` runs `bash .cursor/in
 ## Cursor Cloud specific instructions
 
 - `.cursor/environment.json` is the Cloud Agent config. It runs `bash .cursor/install.sh` and `bash .cursor/start.sh`. Agents that start from a commit containing that file use it.
-- The environment install installs mise and Node.js 24, enables pnpm 12.6.0, installs the web app, installs Playwright Chromium, and installs skills from `nikolaybotev/local-skills` into `~/.cursor/skills-cursor`, including `ai-native-sdlc`. After activation, `node -v` is 24.
+- The environment install runs `mise.toml` and the `packageManager` field in `package.json`, installs the web app, installs Playwright Chromium, and installs skills from `nikolaybotev/local-skills` into `~/.cursor/skills-cursor`, including `ai-native-sdlc`.
 - The start command serves `vite preview` of `apps/web/dist` at `http://127.0.0.1:5173` and returns immediately when that URL is already up. A fresh page shows the demo trial balance, the cabinet obligations, the project runway, and the $8,500 same-day route.

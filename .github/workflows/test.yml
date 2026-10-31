@@ -13,10 +13,13 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@v4
-      - name: Set up Node.js 24
+      - name: Node version from mise.toml
+        id: node
+        run: echo "version=$(sed -n 's/^node = "\(.*\)"/\1/p' mise.toml)" >> "$GITHUB_OUTPUT"
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: ${{ steps.node.outputs.version }}
       - name: Run tests
         run: node --disable-warning=ExperimentalWarning --test
 
@@ -26,12 +29,15 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@v4
+      - name: Node version from mise.toml
+        id: node
+        run: echo "version=$(sed -n 's/^node = "\(.*\)"/\1/p' mise.toml)" >> "$GITHUB_OUTPUT"
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
-      - name: Set up Node.js 24
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: ${{ steps.node.outputs.version }}
           cache: pnpm
       - name: Install
         run: pnpm install --frozen-lockfile

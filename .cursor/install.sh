@@ -14,7 +14,7 @@ mise install
 mise reshim
 
 corepack enable
-corepack prepare pnpm@12.6.0 --activate
+corepack prepare "$(node -p "require('./package.json').packageManager")" --activate
 mise reshim
 
 pnpm install --frozen-lockfile

@@ -16,6 +16,14 @@ Reserve Important for a ledger that posts out of balance, a runway that hides sp
 
 Report at most five nits per review; summarize the rest as a count.
 
+## Writing
+
+Tag **Writing** on each finding:
+
+- **Self-reference:** this repo's GitHub owner, name, or URL hardcoded in prose, docs, scripts, or workflows instead of "this repo" or a derived value (`git remote`, `GITHUB_REPOSITORY`, `${{ github.repository }}`, `${{ github.repository_owner }}`). References to other repositories are fine.
+- **Variable config:** the current value of a pin, env var, secret, or config key copied into docs, tests, or workflows instead of naming the setting or file (for example `mise.toml` or the `packageManager` field in `package.json`).
+- **Obvious:** in human-facing docs only (`README.md` and other user or setup docs), notes a competent reader already knows, such as `(healthy: exit 0)`. Do not flag explicit expectations in agent-facing files (`AGENTS.md`, `REVIEW.md`, skills, and intent docs written for agents).
+
 ## Do not report
 
 Formatting the CI already enforces, generated files the repo ignores, and wording inside the verbatim prompt block of any `intent.md`.
